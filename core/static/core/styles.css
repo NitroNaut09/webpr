@@ -1,0 +1,20 @@
+/* Ensure footer is anchored at the bottom of the screen */
+.hover-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%); /* Move the footer out of view */
+    transition: transform 0.5s ease-in-out; /* Smooth animation */
+}
+
+/* Show the footer when hovered */
+body:hover .hover-footer {
+    transform: translateY(0); /* Bring the footer into view */
+}
+
+/* Prevent content overlap with footer */
+body {
+    margin: 0;
+    padding-bottom: 50px; /* Adjust based on footer height */
+}
