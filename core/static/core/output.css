@@ -580,4 +580,93 @@ body {
   margin: 0;
   padding-bottom: 50px;
   /* Adjust based on footer height */
+  background-image: url("paper.jpg");
+  background-repeat: repeat;
+  background-size: 1920px 1080px;
+}
+
+html {
+  font-size: 100%;
+  background-color: #e6e6e6;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover h1 {
+  text-shadow: -0.05em 0.05em rgba(0, 0, 0, 0.1);
+  background-color: #0cf;
+}
+
+h1 {
+  padding: 1em;
+  text-align: start;
+  font: 5rem Futura, "Trebuchet MS", Calibri, "Helvetica Neue", Arial,
+    sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-shadow: -0.05em 0.05em rgba(0, 0, 0, 0.2);
+  color: white;
+  background-color: #222;
+  background-image: repeating-linear-gradient(
+      45deg,
+      transparent 5px,
+      hsla(197, 62%, 11%, 0.5) 5px,
+      hsla(197, 62%, 11%, 0.5) 10px,
+      hsla(5, 53%, 63%, 0) 10px,
+      hsla(5, 53%, 63%, 0) 35px,
+      hsla(5, 53%, 63%, 0.5) 35px,
+      hsla(5, 53%, 63%, 0.5) 40px,
+      hsla(197, 62%, 11%, 0.5) 40px,
+      hsla(197, 62%, 11%, 0.5) 50px,
+      hsla(197, 62%, 11%, 0) 50px,
+      hsla(197, 62%, 11%, 0) 60px,
+      hsla(5, 53%, 63%, 0.5) 60px,
+      hsla(5, 53%, 63%, 0.5) 70px,
+      hsla(35, 91%, 65%, 0.5) 70px,
+      hsla(35, 91%, 65%, 0.5) 80px,
+      hsla(35, 91%, 65%, 0) 80px,
+      hsla(35, 91%, 65%, 0) 90px,
+      hsla(5, 53%, 63%, 0.5) 90px,
+      hsla(5, 53%, 63%, 0.5) 110px,
+      hsla(5, 53%, 63%, 0) 110px,
+      hsla(5, 53%, 63%, 0) 120px,
+      hsla(197, 62%, 11%, 0.5) 120px,
+      hsla(197, 62%, 11%, 0.5) 140px
+    ),
+    repeating-linear-gradient(
+      135deg,
+      transparent 5px,
+      hsla(197, 62%, 11%, 0.5) 5px,
+      hsla(197, 62%, 11%, 0.5) 10px,
+      hsla(5, 53%, 63%, 0) 10px,
+      hsla(5, 53%, 63%, 0) 35px,
+      hsla(5, 53%, 63%, 0.5) 35px,
+      hsla(5, 53%, 63%, 0.5) 40px,
+      hsla(197, 62%, 11%, 0.5) 40px,
+      hsla(197, 62%, 11%, 0.5) 50px,
+      hsla(197, 62%, 11%, 0) 50px,
+      hsla(197, 62%, 11%, 0) 60px,
+      hsla(5, 53%, 63%, 0.5) 60px,
+      hsla(5, 53%, 63%, 0.5) 70px,
+      hsla(35, 91%, 65%, 0.5) 70px,
+      hsla(35, 91%, 65%, 0.5) 80px,
+      hsla(35, 91%, 65%, 0) 80px,
+      hsla(35, 91%, 65%, 0) 90px,
+      hsla(5, 53%, 63%, 0.5) 90px,
+      hsla(5, 53%, 63%, 0.5) 110px,
+      hsla(5, 53%, 63%, 0) 110px,
+      hsla(5, 53%, 63%, 0) 140px,
+      hsla(197, 62%, 11%, 0.5) 140px,
+      hsla(197, 62%, 11%, 0.5) 160px
+    );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.15);
+}
+
+i {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.8);
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.4);
 }
