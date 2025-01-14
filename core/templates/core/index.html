@@ -6,8 +6,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>physics.</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Audiowide&family=Stalinist+One&display=swap"
       rel="stylesheet"
@@ -20,7 +18,13 @@
     <style>
       /* Fullscreen Gradient Background */
       .gradient-wrapper {
-        background: linear-gradient(-45deg, #d781f1, #dd1a65,rgb(169, 105, 243),rgb(122, 51, 253));
+        background: linear-gradient(
+          -45deg,
+          #d781f1,
+          #dd1a65,
+          rgb(169, 105, 243),
+          rgb(122, 51, 253)
+        );
         background-size: 400% 400%;
         animation: gradient 15s ease infinite;
         position: fixed;
@@ -42,55 +46,108 @@
           background-position: 0% 50%;
         }
       }
+
+      /* Rotated Image */
+      .rotated-image {
+        position: fixed;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%) rotate(90deg);
+        max-height: 8%;
+        z-index: 10;
+        cursor: pointer;
+      }
+
+      /* Slide Transition */
+      .slide-out {
+        transform: translateY(-100%);
+        transition: transform 1s ease-in-out;
+      }
+
+      .fade-in {
+        opacity: 1;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .hidden {
+        opacity: 0;
+      }
     </style>
   </head>
   <body>
     <!-- Gradient Background -->
     <div class="gradient-wrapper"></div>
 
-    <!-- Header -->
-    <header class="text-center py-6">
-      <h1 class="text-5xl font-bold text-white drop-shadow-lg">physics.</h1>
-      <p
-        style="font-family: 'Audiowide', serif"
-        class="text-lg text-gray-200 mt-2 drop-shadow"
-      >
-        Discover the beauty of physics and circuits.
-      </p>
-    </header>
-
-    <!-- Main Layout -->
-    <div class="flex h-screen items-center justify-between px-8">
-      <!-- Left Content -->
-      <div
-        class="flex flex-col items-start justify-center bg-white bg-opacity-90 shadow-lg rounded-lg p-8 w-1/3"
-      >
-        <h2 class="text-2xl font-semibold text-purple-600">Information</h2>
-        <p class="text-gray-700 mt-4">
-          Dive into detailed explanations and theory. Understand how voltage,
-          current, and resistance interact in your circuit.
+    <!-- Main Content -->
+    <div id="page-1" class="main-content">
+      <header class="text-center py-6">
+        <h1 class="text-5xl font-bold text-white drop-shadow-lg">physics.</h1>
+        <p
+          style="font-family: 'Audiowide', serif"
+          class="text-lg text-gray-200 mt-2 drop-shadow"
+        >
+          Discover the beauty of physics and circuits.
         </p>
+      </header>
+
+      <div class="flex h-screen items-center justify-between px-8">
+        <div
+          class="flex flex-col items-start justify-center bg-white bg-opacity-90 shadow-lg rounded-lg p-8 w-full md:w-1/2 lg:w-1/3"
+        >
+          <h2 class="text-2xl font-semibold text-purple-600">Information</h2>
+          <p class="text-gray-700 mt-4">
+            Dive into detailed explanations and theory.
+          </p>
+        </div>
+
+        <div
+          class="w-[8%] bg-purple-600 bg-opacity-50 rounded-lg flex items-center justify-center shadow-lg"
+        >
+          <span class="text-white text-xl transform font-bold">Explore</span>
+        </div>
+
+        <div
+          class="flex flex-col items-start justify-center bg-white bg-opacity-90 shadow-lg rounded-lg p-8 w-full md:w-1/2 lg:w-1/3"
+        >
+          <h2 class="text-2xl font-semibold text-purple-600">
+            Interactive Graphs
+          </h2>
+          <p class="text-gray-700 mt-4">Visualize your calculations.</p>
+        </div>
       </div>
 
-      <!-- Divider Bar -->
-      <div
-        class="w-[8%] bg-purple-600 bg-opacity-50 rounded-lg flex items-center justify-center shadow-lg"
-      >
-        <span class="text-white text-xl transform font-bold"> Explore </span>
-      </div>
+      <img
+        src="{% static 'core/arrow-drawing-4.png' %}"
+        alt="Rotated Arrow"
+        class="rotated-image"
+        id="arrow"
+      />
+    </div>
 
-      <!-- Right Content -->
-      <div
-        class="flex flex-col items-start justify-center bg-white bg-opacity-90 shadow-lg rounded-lg p-8 w-1/3"
-      >
-        <h2 class="text-2xl font-semibold text-purple-600">
-          Interactive Graphs
-        </h2>
-        <p class="text-gray-700 mt-4">
-          Visualize your calculations. Plot real-time changes in circuit
-          parameters and observe relationships in action.
-        </p>
+    <!-- New Page -->
+    <div id="page-2" class="hidden">
+      <div class="text-center py-6">
+        <h1 class="text-5xl font-bold text-purple-600">New Page</h1>
+        <p class="text-gray-700 mt-4">Welcome to the second page!</p>
       </div>
     </div>
+
+    <script>
+      const arrow = document.getElementById("arrow");
+      const page1 = document.getElementById("page-1");
+      const page2 = document.getElementById("page-2");
+
+      arrow.addEventListener("click", () => {
+        // Slide the first page out
+        page1.classList.add("slide-out");
+
+        // Show and fade in the second page after a delay
+        setTimeout(() => {
+          page1.style.display = "none";
+          page2.classList.remove("hidden");
+          page2.classList.add("fade-in");
+        }, 1000); // Matches the transition duration
+      });
+    </script>
   </body>
 </html>

@@ -44,7 +44,25 @@ body {
   font-style: normal;
 }
 
-
 h1 {
   font-family: "Stalinist One", serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.rotated-image {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: rotate(-90deg);
+  transform-origin: bottom left;
+}
+
+.no-select {
+    user-select: none; /* Prevent text selection */
+    -webkit-user-select: none; /* For WebKit browsers (Safari, Chrome) */
+    -moz-user-select: none; /* For Firefox */
+    -ms-user-select: none; /* For older IE versions */
 }
