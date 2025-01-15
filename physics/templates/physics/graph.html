@@ -1,0 +1,128 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ohm's Law Slider</title>
+	<a href="{% url 'index' %}">Back to Home</a>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .slider-container {
+        margin: 20px 0;
+      }
+      .slider-label {
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+      .value-display {
+        font-size: 1.2em;
+        color: #007bff;
+      }
+      canvas {
+        display: block;
+        margin: 20px auto;
+        max-width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ohm's Law Simulator</h1>
+
+    <div class="slider-container">
+      <div class="slider-label">
+        Current (I) [Amps]:
+        <span id="current-value" class="value-display">1</span>
+      </div>
+      <input
+        type="range"
+        id="current-slider"
+        min="0.1"
+        max="10"
+        step="0.1"
+        value="1"
+      />
+    </div>
+
+    <div class="slider-container">
+      <div class="slider-label">
+        Voltage (V) [Volts]:
+        <span id="voltage-value" class="value-display">10</span>
+      </div>
+      <input
+        type="range"
+        id="voltage-slider"
+        min="1"
+        max="100"
+        step="1"
+        value="10"
+      />
+    </div>
+
+    <h2>
+      Resistance (R):
+      <span id="resistance-display" class="value-display">10</span> Ω
+    </h2>
+
+    <canvas id="ohms-graph"></canvas>
+
+    <script>
+      // Elements
+      const currentSlider = document.getElementById("current-slider");
+      const voltageSlider = document.getElementById("voltage-slider");
+      const currentValue = document.getElementById("current-value");
+      const voltageValue = document.getElementById("voltage-value");
+      const resistanceDisplay = document.getElementById("resistance-display");
+
+      // Update display values and calculate resistance
+      function updateValues() {
+        const current = parseFloat(currentSlider.value);
+        const voltage = parseFloat(voltageSlider.value);
+        const resistance = voltage / current;
+
+        // Update displayed values
+        currentValue.textContent = current.toFixed(1);
+        voltageValue.textContent = voltage.toFixed(1);
+        resistanceDisplay.textContent = resistance.toFixed(2);
+
+        // Optionally, update a graph (placeholder for now)
+        drawGraph(current, voltage, resistance);
+      }
+
+      // Placeholder graph function
+      function drawGraph(current, voltage, resistance) {
+        const canvas = document.getElementById("ohms-graph");
+        const ctx = canvas.getContext("2d");
+        canvas.width = 600;
+        canvas.height = 400;
+
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        // Example: Drawing resistance as a simple bar
+        ctx.fillStyle = "blue";
+        ctx.fillRect(50, 350 - resistance * 30, 50, resistance * 30);
+
+        // Labels
+        ctx.fillStyle = "black";
+        ctx.font = "16px Arial";
+        ctx.fillText(
+          `R = ${resistance.toFixed(2)} Ω`,
+          60,
+          340 - resistance * 30
+        );
+      }
+
+      // Initial calculation and graph
+      updateValues();
+
+      // Event Listeners
+      currentSlider.addEventListener("input", updateValues);
+      voltageSlider.addEventListener("input", updateValues);
+    </script>
+  </body>
+</html>
