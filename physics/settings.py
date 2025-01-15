@@ -58,8 +58,10 @@ ROOT_URLCONF = 'physics.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'core', 'templates')],
-        'APP_DIRS': True,
+        'DIRS': [
+            BASE_DIR / 'templates',  # Global templates (if any)
+        ],
+        'APP_DIRS': True,  # This tells Django to look inside app's 'templates/' folders
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
